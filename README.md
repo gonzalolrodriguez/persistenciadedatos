@@ -1,16 +1,8 @@
-# App para Cargar y Ver Alumnos
-
-Este proyecto tiene dos partes, bien simples, para que aprendas cómo guardar datos en el navegador y también usando un servidor. Todo pensado para que lo entienda cualquiera que recién arranca.
+# App para cargar y ver Alumnos
 
 ---
 
 ## Parte 1: Solo en el Navegador (carpeta `parte-1`)
-
-### ¿Qué podés hacer?
-
-- Cargar datos de alumnos: **nombre**, **edad** y **nota**.
-- Ver la lista de alumnos ordenada por **nota** (de mayor a menor) y después por **nombre** (alfabético).
-- Los datos se guardan en tu compu (en el navegador), así que aunque cierres la página, siguen ahí.
 
 ### ¿Cómo se usa?
 
@@ -23,10 +15,6 @@ Este proyecto tiene dos partes, bien simples, para que aprendas cómo guardar da
 
 - Usa `localStorage`, que es como una "cajita" que tiene tu navegador para guardar cosas.
 - Cada vez que abrís la página, lee lo que guardaste antes y lo muestra.
-
-### Diseño
-
-- Súper simple y minimalista, para que no te pierdas.
 
 ---
 
@@ -67,39 +55,4 @@ Este proyecto tiene dos partes, bien simples, para que aprendas cómo guardar da
 - Ejemplo: `http://192.168.1.10:3001` (cambiá por la IP de tu PC).
 - El servidor ya está listo para aceptar conexiones desde cualquier IP.
 
-### Diseño
-
-- Igual de simple y minimalista que la parte 1.
-
 ---
-
-## Estructura del Proyecto
-
-```
-parte-1/
-  index.html         # Solo navegador, sin backend
-parte-2/
-  server.js          # Backend Node.js
-  public/
-    index.html       # Página web servida por el backend
-package.json         # (opcional, para dependencias de Node.js)
-```
-
----
-
-## Requisitos
-
-- Para parte-1: solo necesitás un navegador moderno.
-- Para parte-2: tenés que tener Node.js instalado.
-
----
-
-## Notas para quienes recién empiezan
-
-- El código es bien simple, pensado para los que están arrancando.
-- Podés tocar los archivos y probar cambios sin miedo.
-- Si te trabás, buscá en Google o preguntale a tu profe.
-
----
-
-¡Éxitos y a meterle pilas programando!
