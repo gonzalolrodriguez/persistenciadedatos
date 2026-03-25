@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(120deg, #f8fafc 0%, #e9f1fb 100%);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contenedor {
+      background: #fff;
+      padding: 32px 28px 24px 28px;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px 0 rgba(60, 60, 120, 0.08);
+      width: 100%;
+      max-width: 370px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #2d3a4a;
+      font-weight: 600;
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      margin: 7px 0 18px 0;
+      border-radius: 7px;
+      border: 1px solid #dbeafe;
+      background: #f6faff;
+      font-size: 1rem;
+      transition: border 0.2s;
+    }
+
+    input:focus {
+      outline: none;
+      border: 1.5px solid #60a5fa;
+      background: #fff;
+    }
+
+    button {
+      background: linear-gradient(90deg, #60a5fa 0%, #38bdf8 100%);
+      color: #fff;
+      border: none;
+      padding: 10px 0;
+      width: 100%;
+      border-radius: 7px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 8px 0 rgba(56, 189, 248, 0.08);
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #38bdf8 0%, #60a5fa 100%);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 18px;
+      background: #f8fafc;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px 0 rgba(60, 60, 120, 0.04);
+    }
+
+    th,
+    td {
+      padding: 10px 8px;
+      border-bottom: 1px solid #e5e7eb;
+      color: #374151;
+    }
+
+    th {
+      background: #e0f2fe;
+      color: #2563eb;
+      font-weight: 600;
+      border-bottom: 2px solid #bae6fd;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="contenedor">
+    <h2>Ingreso de datos</h2>
+
+    <input type="text" id="nombre" placeholder="Nombre" />
+    <input type="number" id="edad" placeholder="Edad" />
+    <input type="number" id="nota" placeholder="Nota" />
+
+    <button onclick="cargar()">Cargar</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Edad</th>
+          <th>Nota</th>
+        </tr>
+      </thead>
+      <tbody id="tablaDatos"></tbody>
+    </table>
+  </div>
+
+  <script>
+    // CARGAR DATOS AL INICIAR LA PAGINA
+    window.onload = function () {
+      mostrarTabla();
+    };
+
+    function cargar() {
+      let nombre = document.getElementById("nombre").value.trim();
+      let edad = document.getElementById("edad").value.trim();
+      let nota = document.getElementById("nota").value.trim();
+
+      if (!nombre || !edad || !nota) {
+        alert("Por favor complete todos los campos.");
+        return;
+      }
+
+      let alumno = {
+        nombre: nombre,
+        edad: parseInt(edad),
+        nota: parseFloat(nota)
+      };
+
+      // guardar en localStorage
+      let alumnos = JSON.parse(localStorage.getItem("alumnos")) || [];
+      alumnos.push(alumno);
+      localStorage.setItem("alumnos", JSON.stringify(alumnos));
+
+      mostrarTabla();
+
+      document.getElementById("nombre").value = "";
+      document.getElementById("edad").value = "";
+      document.getElementById("nota").value = "";
+    }
+
+    function mostrarTabla() {
+      let alumnos = JSON.parse(localStorage.getItem("alumnos")) || [];
+      // Ordenar por nota descendente y luego por nombre ascendente
+      alumnos.sort(function (a, b) {
+        if (b.nota !== a.nota) return b.nota - a.nota;
+        return a.nombre.localeCompare(b.nombre);
+      });
+      let html = "";
+      alumnos.forEach(function (alumno) {
+        html += `<tr><td>${alumno.nombre}</td><td>${alumno.edad}</td><td>${alumno.nota}</td></tr>`;
+      });
+      document.getElementById("tablaDatos").innerHTML = html;
+    }
+  </script>
+</body>
+
+</html>

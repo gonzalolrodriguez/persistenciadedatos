@@ -1,0 +1,19 @@
+{
+  "name": "persistencia-de-datos",
+  "version": "1.0.0",
+  "description": "Este proyecto tiene dos partes, bien simples, para que aprendas cómo guardar datos en el navegador y también usando un servidor. Todo pensado para que lo entienda cualquiera que recién arranca.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0"
+  },
+  "devDependencies": {}
+}
